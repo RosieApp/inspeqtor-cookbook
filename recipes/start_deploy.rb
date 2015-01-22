@@ -1,0 +1,1 @@
+execute 'inspeqtorctl start deploy'
