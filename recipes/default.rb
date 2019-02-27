@@ -1,5 +1,15 @@
 if node["inspeqtor"]["use_packagecloud_repo"]
   packagecloud_repo "contribsys/inspeqtor"
+else
+  script "install_inspeqtor" do
+    interpreter "bash"
+    user "root"
+    cwd "/tmp"
+    code <<-EOH
+    wget https://github.com/mperham/inspeqtor/releases/download/v2.0.0-1/inspeqtor_2.0.0-1_amd64.upstart.deb
+    dpkg -i inspeqtor_2.0.0-1_amd64.upstart.deb
+    EOH
+  end
 end
 
 package "inspeqtor"
